@@ -7,7 +7,7 @@ import { Button } from "./ui/button";
 const StartupCard = ({ post }: { post: StartupTypeCard }) => {
   const {
     title,
-    author: { _id: authorId, name },
+    author: { _id: authorId, name, image: authorImage },
     _createdAt,
     views,
     _id,
@@ -35,7 +35,7 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
         </div>
         <Link href={`/user/${authorId}`}>
           <Image
-            src={"https:/placeholder.co/48*48"}
+            src={authorImage || "https://placehold.co/48"}
             alt="placeholder"
             width={48}
             height={48}
@@ -45,16 +45,20 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
       </div>
       <Link href={`/startup/${_id}`}>
         <p className="startup-card_desc">{description}</p>
-        <Image src={image} alt="placeholder" className="startup-card_img" />
+        <Image
+          src={image || "https://placehold.co/600x400.svg"}
+          alt="placeholder"
+          width={80}
+          height={41}
+          className="startup-card_img"
+        />
       </Link>
       <div className="flex-between gap-3 mt-5">
         <Link href={`/?query=${category?.toLowerCase()}`}>
           <p className="text-16-medium">{category}</p>
         </Link>
         <Button className="startup-card_btn" asChild>
-          <Link href={`/startup/${_id}`}>
-          Details
-          </Link>
+          <Link href={`/startup/${_id}`}>Details</Link>
         </Button>
       </div>
     </li>

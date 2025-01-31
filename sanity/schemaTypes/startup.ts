@@ -5,7 +5,7 @@ export const startup = defineType({
   name: "startup",
   title: "Startup",
   type: "document",
-  
+
   fields: [
     defineField({
       name: "title",
@@ -15,18 +15,27 @@ export const startup = defineType({
       name: "slug",
       type: "slug",
       options: {
-        source: "title"
-      }
+        source: "title",
+      },
     }),
     defineField({
       name: "author",
       type: "reference",
-      to: {type: "author"}
+      to: { type: "author" },
+    }),
+    defineField({
+      name: "views",
+      type: "number",
+    }),
+    defineField({
+      name: "description",
+      type: "text",
     }),
     defineField({
       name: "category",
       type: "string",
-      validation: (Rule) => Rule.min(1).max(20).required().error("Please enter a category.")
+      validation: (Rule) =>
+        Rule.min(1).max(20).required().error("Please enter a category."),
     }),
     defineField({
       name: "image",
@@ -38,5 +47,4 @@ export const startup = defineType({
       type: "markdown",
     }),
   ],
-  
 });

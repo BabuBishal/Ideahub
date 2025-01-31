@@ -27,7 +27,7 @@ const Navbar = async () => {
                   {session?.user?.name}
                 </span>
               </Link>
-            </>
+            </> 
           ) : (
             <form action={async () => {
               "use server";
