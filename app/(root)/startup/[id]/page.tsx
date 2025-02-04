@@ -10,8 +10,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import View from "@/components/View";
 const md = markdownIt();
 
-const page = async ({ params }: { params: { id: string } }) => {
-  const id = params.id;
+const page = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const id = (await params).id;
   console.log(id);
 
   const post = await client.fetch(STARTUP_BY_ID_QUERY, { id });
@@ -61,11 +61,11 @@ const page = async ({ params }: { params: { id: string } }) => {
             <p className="no-result">No details available.</p>
           )}
         </div>
-        <hr className="divider "/>
+        <hr className="divider " />
       </section>
-     <Suspense fallback={<Skeleton className="view_skeleton" />}>
-          <View id={id} />
-     </Suspense>
+      <Suspense fallback={<Skeleton className="view_skeleton" />}>
+        <View id={id} />
+      </Suspense>
     </>
   );
 };
