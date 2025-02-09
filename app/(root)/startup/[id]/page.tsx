@@ -10,10 +10,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import View from "@/components/View";
 const md = markdownIt();
 
-const page = async ({ params }: { params: Promise<{ id: string }> }) => {
-  const id = (await params).id;
-  console.log(id);
-
+const page = async ({ params }: { params: { id: string } }) => {
+  const { id } = params;
   const post = await client.fetch(STARTUP_BY_ID_QUERY, { id });
 
   if (!post) return notFound();

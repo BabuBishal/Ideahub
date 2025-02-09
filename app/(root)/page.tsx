@@ -1,5 +1,5 @@
 import Image from "next/image";
-import StartupCard, { StartupTypeCard } from "@/components/StartupCard";
+import StartupCard, { StartupCardType } from "@/components/StartupCard";
 import SearchForm from "@/components/SearchForm";
 import { STARTUPS_QUERIES } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
@@ -30,7 +30,7 @@ export default async function Home({
           Pitch your Startup, <br /> Connect with Entrepreneurs
         </h1>
         <p className="sub-heading !max-w-3xl">
-          Submit Ideas, Vote on Pitches, and Get Notices in Virtual
+          Submit Ideas, Vote on Pitches, and Get Noticed in Virtual
           Competitions.
         </p>
         <SearchForm query={query} />
@@ -41,7 +41,7 @@ export default async function Home({
         </p>
         <ul className="mt-7 card_grid">
           {posts?.length > 0 ? (
-            posts.map((post: StartupTypeCard) => (
+            posts.map((post: StartupCardType) => (
               <StartupCard key={post?._id} post={post} />
             ))
           ) : (

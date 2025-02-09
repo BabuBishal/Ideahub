@@ -23,7 +23,9 @@ const View = async ({ id }: { id: string }) => {
         <Ping />
       </div>
       <p className="view-text">
-        <span className="font-bold">{`${totalViews} views`}</span>
+        <span className="font-bold">
+          {totalViews ? `${totalViews} views` : "0 views"}
+        </span>
       </p>
     </div>
   );
